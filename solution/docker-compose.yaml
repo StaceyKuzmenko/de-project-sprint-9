@@ -1,14 +1,14 @@
 version: "3.9"
 
 services:
-  dds_service:
+  dds-service:
     build:
-      context: ./service_dds
+      context: ./service-dds
       network: host
-    image: dds_service:local
-    container_name: dds_service_container
+    image: dds-service:local
+    container_name: dds-service-container
     environment:
-      FLASK_APP: ${DDS_APP:-dds_service}
+      FLASK_APP: ${DDS_APP:-dds-service}
       DEBUG: ${DDS_DEBUG:-True}
 
       KAFKA_HOST: ${KAFKA_HOST}
@@ -30,14 +30,14 @@ services:
       - "5012:5000"
     restart: unless-stopped
 
-  cdm_service:
+  cdm-service:
     build:
-      context: ./service_cdm
+      context: ./service-cdm
       network: host
-    image: cdm_service:local
-    container_name: cdm_service_container
+    image: cdm-service:local
+    container_name: cdm-service-container
     environment:
-      FLASK_APP: ${CDM_SERVICE_APP:-cdm_service}
+      FLASK_APP: ${CDM_SERVICE_APP:-cdm-service}
       DEBUG: ${CDM_SERVICE_DEBUG:-True}
 
       KAFKA_HOST: ${KAFKA_HOST}
